@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Validator;
+use App\Http\Requests\IndexPostRequest;
 
 class AuthController extends Controller
 {
@@ -13,11 +15,11 @@ class AuthController extends Controller
         return view('index');
     }
     
-    public function login(Request $request)
+    public function login(IndexPostRequest $request)
     {
-        $name = $request->input('name');
-        $pass = $request->input('password');
-        var_dump($name, $pass); exit;
+        $validatedData = $request->validated();
+        //var_dump($validatedData); exit;
+        return view('top', ['datum' => $validatedData]);
     }
     
 }
