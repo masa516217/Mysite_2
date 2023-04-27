@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Validator;
 use App\Http\Requests\IndexPostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -17,9 +18,22 @@ class AuthController extends Controller
     
     public function login(IndexPostRequest $request)
     {
-        $validatedData = $request->validated();
+        $datum = $request->validated();
         //var_dump($validatedData); exit;
-        return view('top', ['datum' => $validatedData]);
+        if (Auth::attempt($datum) === false) {
+            return back()
+        ->withInput()
+        ->withErrors(['auth' => 'emailかパスワードに誤りがあります',])
+        ;
+        }
+        
+        $request->session()->regenerate();
+        return redirect()->intended('top');
+    }
+    
+    public function top()
+    {
+        return view('top');
     }
     
 }

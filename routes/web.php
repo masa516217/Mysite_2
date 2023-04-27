@@ -16,6 +16,7 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [AuthController::class, 'index'])->name('front.index');
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/top', [AuthController::class, 'top']);
 
 //Route::middleware(['auth'])->group(function() {
 //Route::prefix('/talk')->group(function() {
