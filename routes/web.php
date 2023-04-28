@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,8 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [AuthController::class, 'index'])->name('front.index');
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/top', [AuthController::class, 'top']);
 
-//Route::middleware(['auth'])->group(function() {
-//Route::prefix('/talk')->group(function() {
-    //Route::get('/', [AuthController::class, 'talk']);
-    
-    //});
-//});
-Route::get('/top', [AuthController::class, 'top']);
+Route::middleware(['auth'])->group(function() {
+    Route::get('/top', [TopController::class, 'top']);
+    Route::get('logout', [AuthController::class, 'logout']);
+});
