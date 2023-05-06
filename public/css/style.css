@@ -1,0 +1,21 @@
+.all {
+    display:flex;
+}
+
+.one {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    display: flex;
+}
+.two {
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    display: flex;
+}
+.three {
+    background-color: green;
+    width: 100px;
+    height: 100px;
+}
