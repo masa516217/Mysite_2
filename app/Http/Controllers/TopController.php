@@ -11,4 +11,9 @@ class TopController extends Controller
     {
         return view('top');
     }
+    
+    public function first()
+    {
+        return view('bulletin.first');
+    }
 }

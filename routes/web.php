@@ -22,3 +22,4 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/top', [TopController::class, 'top']);
     Route::get('logout', [AuthController::class, 'logout']);
 });
+Route::get('/first', [TopController::class, 'first']);
